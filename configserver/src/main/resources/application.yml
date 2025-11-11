@@ -1,0 +1,19 @@
+spring:
+    application:
+        name: "configserver"
+    profiles:
+        #active: native
+        active: git
+
+    cloud:
+        config:
+            server:
+                #native:
+                    # search-locations: "classpath:/config"
+                  #search-locations: file:///C:/Users/MSI/Desktop/Devoir3/yosr-spring-cloud/config-repo
+              git:
+                uri: https://github.com/yosr1701/config-repo.git
+                default-label: main
+                clone-on-start: true
+server:
+    port: 9999
