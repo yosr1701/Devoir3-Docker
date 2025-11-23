@@ -19,11 +19,11 @@ import lombok.AllArgsConstructor;
 public class GenreController {
     private GnereService genreService;
 
-    @Value("${build.version}")
-    private String buildVersion;
-
-    @Autowired
-    Configuration configuration;
+//    @Value("${build.version}")
+//    private String buildVersion;
+//
+//    @Autowired
+//    Configuration configuration;
 
     public GenreController(GnereService genreService) {
         this.genreService = genreService;
@@ -36,17 +36,17 @@ public class GenreController {
                 HttpStatus.OK
         );
     }
-    @GetMapping("/version")
-    public ResponseEntity<String> version()
-    {
-        return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
-    }
-
-    @GetMapping("/author")
-    public ResponseEntity<String> retrieveAuthorInfo() {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(configuration.getName()+" "+configuration.getEmail() );
-    }
+//    @GetMapping("/version")
+//    public ResponseEntity<String> version()
+//    {
+//        return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+//    }
+//
+//    @GetMapping("/author")
+//    public ResponseEntity<String> retrieveAuthorInfo() {
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(configuration.getName()+" "+configuration.getEmail() );
+//    }
 }
 
 

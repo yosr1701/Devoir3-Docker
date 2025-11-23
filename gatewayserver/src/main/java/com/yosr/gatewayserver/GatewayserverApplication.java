@@ -7,13 +7,14 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+
 public class GatewayserverApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayserverApplication.class, args);
     }
 
-   /* @Bean
+   @Bean
     public RouteLocator MyRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
                 .route(p -> p
@@ -21,9 +22,12 @@ public class GatewayserverApplication {
                         .uri("lb://GENRE"))
                 .route(p -> p
                         .path("/api/vetements/**")
+                        .filters( f -> f.circuitBreaker(config ->
+                                        config.setName("vetementCircuitBreaker")
+                                                .setFallbackUri("forward:/contactAdmin")))
                         .uri("lb://VETEMENT"))
                 .build();
-    }*/
+    }
 
 
     }

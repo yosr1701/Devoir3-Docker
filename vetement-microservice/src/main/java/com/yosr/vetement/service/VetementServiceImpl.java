@@ -21,7 +21,7 @@ public class VetementServiceImpl implements VetementService {
 
     @Override
     public  APIResponseDto getVetementById(Long id) {
-
+        String vname;
         Vetement vet = vetementRepository.findById(id).get();
 
         /*GenreDto genreDto = webClient.get()
@@ -31,12 +31,17 @@ public class VetementServiceImpl implements VetementService {
                 .block();*/
         GenreDto genreDto = apiClient.getGenByCode(vet.getGenCode());
 
+        if (genreDto == null)
+            vname="NOT AVAILABLE";
+        else
+            vname = genreDto.getGenName();
+
         VetementDto  vetementDto = new VetementDto(
                 vet.getId(),
                 vet.getVetName(),
                 vet.getVetSize(),
                 vet.getGenCode(),
-                genreDto.getGenName()
+                vname
 
         );
 
